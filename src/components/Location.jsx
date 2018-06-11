@@ -7,7 +7,7 @@ class Location extends Component {
         <h3>Current Location</h3>
         <div className="coordinates">
           <span>{this.props.location.lat}, </span>
-          <span>{this.props.location.lon}</span>
+          <span>{this.props.location.lng}</span>
         </div>
         <div className="address">Address</div>
       </div>
