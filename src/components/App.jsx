@@ -6,7 +6,30 @@ import axios from "axios";
 class App extends Component {
   state = {
     conditions: {},
-    location: {}
+    location: {},
+    address: ""
+  };
+
+  getAddress = () => {
+    const lat = this.state.location.lat;
+    const lng = this.state.location.lng;
+    const google = window.google;
+    const geocoder = new google.maps.Geocoder();
+    var latLng = new google.maps.LatLng(lat, lng);
+
+    geocoder.geocode(
+      { location: latLng },
+      function(results, status) {
+        if (status === "OK") {
+          if (results[0]) {
+            console.log(results[0].formatted_address);
+            this.setState({ address: results[0].formatted_address });
+          } else {
+            window.alert("No results found");
+          }
+        }
+      }.bind(this)
+    );
   };
 
   componentDidMount() {
@@ -22,7 +45,7 @@ class App extends Component {
             console.log("Successfull Response");
             this.setState({
               conditions: {
-                weather: response.data.weather,
+                weather: response.data.weather[0],
                 temp: response.data.main.temp,
                 sunrise: response.data.sys.sunrise,
                 sunset: response.data.sys.sunset
@@ -40,13 +63,15 @@ class App extends Component {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
+
+    this.getAddress();
   }
 
   render() {
     return (
       <div className="App">
         <Header title="FCC React Weather App" />
-        <Location location={this.state.location} />
+        <Location location={this.state.location} address={this.state.address} />
       </div>
     );
   }

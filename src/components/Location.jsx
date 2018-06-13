@@ -9,7 +9,7 @@ class Location extends Component {
           <span>{this.props.location.lat}, </span>
           <span>{this.props.location.lng}</span>
         </div>
-        <div className="address">Address</div>
+        <div className="address">{this.props.address}</div>
       </div>
     );
   }
