@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Location from "./Location";
-import axios from "axios";
+// import axios from "axios";
 
 class App extends Component {
   state = {
@@ -10,62 +10,57 @@ class App extends Component {
     address: null
   };
 
-  getAddress = () => {
-    const lat = this.state.location.lat;
-    const lng = this.state.location.lng;
-    const google = window.google ? window.google : {};
-    const geocoder = new google.maps.Geocoder();
-    var latLng = new google.maps.LatLng(lat, lng);
-    console.log(latLng);
-
-    geocoder.geocode(
-      { location: latLng },
-      function(results, status) {
-        if (status === "OK") {
-          if (results[0]) {
-            console.log(results[0].formatted_address);
-            this.setState({ address: results[0].formatted_address });
-          } else {
-            window.alert("No results found");
-          }
-        }
-      }.bind(this)
-    );
-  };
-
-  componentDidMount() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        const url = "https://fcc-weather-api.glitch.me/api/current?";
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-
-        axios
-          .get(`${url}lat=${lat}&lon=${lng}`)
-          .then(response => {
-            console.log("Successfull Response");
-            this.setState({
-              conditions: {
-                weather: response.data.weather[0],
-                temp: response.data.main.temp,
-                sunrise: response.data.sys.sunrise,
-                sunset: response.data.sys.sunset
-              },
-              location: {
-                lat,
-                lng
-              }
-            });
-          })
-          .catch(error => {
-            console.log(`Error: No Response: ${error}`);
+  async componentDidMount() {
+    try {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(async position => {
+          const url = await "https://fcc-weather-api.glitch.me/api/current?";
+          const lat = await position.coords.latitude;
+          const lng = await position.coords.longitude;
+          const response = await fetch(`${url}lat=${lat}&lon=${lng}`);
+          const json = await response.json();
+          console.log(json);
+          await this.setState({
+            conditions: {
+              weather: json.weather[0],
+              temp: json.main.temp,
+              sunrise: json.sys.sunrise,
+              sunset: json.sys.sunset
+            },
+            location: {
+              lat,
+              lng
+            }
           });
-      });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+      getAddress = () => {
+        const lat = this.state.location.lat;
+        const lng = this.state.location.lng;
+        const google = window.google ? window.google : {};
+        const geocoder = new google.maps.Geocoder();
+        var latLng = new google.maps.LatLng(lat, lng);
+        console.log(latLng);
 
-    this.getAddress();
+        geocoder.geocode(
+          { location: latLng },
+          function(results, status) {
+            if (status === "OK") {
+              if (results[0]) {
+                console.log(results[0].formatted_address);
+                this.setState({ address: results[0].formatted_address });
+              } else {
+                window.alert("No results found");
+              }
+            }
+          }.bind(this)
+        );
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
@@ -73,6 +68,7 @@ class App extends Component {
       <div className="App">
         <Header title="FCC React Weather App" />
         <Location location={this.state.location} address={this.state.address} />
+        {/* <p>{this.state.conditions.coord.lat}</p> */}
       </div>
     );
   }
