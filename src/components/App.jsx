@@ -7,15 +7,16 @@ class App extends Component {
   state = {
     conditions: {},
     location: {},
-    address: ""
+    address: null
   };
 
   getAddress = () => {
     const lat = this.state.location.lat;
     const lng = this.state.location.lng;
-    const google = window.google;
+    const google = window.google ? window.google : {};
     const geocoder = new google.maps.Geocoder();
     var latLng = new google.maps.LatLng(lat, lng);
+    console.log(latLng);
 
     geocoder.geocode(
       { location: latLng },
