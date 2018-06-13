@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import Header from "./Header";
+import Conditions from "./Conditions";
 import Location from "./Location";
 import axios from "axios";
 
 class App extends Component {
   state = {
-    conditions: {},
+    conditions: {
+      weather: {
+        main: null,
+        description: null,
+        icon: null
+      }
+    },
     location: {},
-    address: null
+    address: ""
   };
 
   getAddress = () => {
@@ -15,16 +22,23 @@ class App extends Component {
     const lng = this.state.location.lng;
     const google = window.google ? window.google : {};
     const geocoder = new google.maps.Geocoder();
-    var latLng = new google.maps.LatLng(lat, lng);
-    console.log(latLng);
+    const latLng = new google.maps.LatLng(lat, lng);
 
     geocoder.geocode(
       { location: latLng },
       function(results, status) {
         if (status === "OK") {
           if (results[0]) {
-            console.log(results[0].formatted_address);
-            this.setState({ address: results[0].formatted_address });
+            console.log("GEOCODER: Status OK");
+            console.log(results[0]);
+            this.setState({
+              address: {
+                formattedAddress: results[0].formatted_address,
+                city: results[0].address_components[1].long_name,
+                state: results[0].address_components[4].long_name,
+                zip: results[0].address_components[6].long_name
+              }
+            });
           } else {
             window.alert("No results found");
           }
@@ -43,19 +57,22 @@ class App extends Component {
         axios
           .get(`${url}lat=${lat}&lon=${lng}`)
           .then(response => {
-            console.log("Successfull Response");
-            this.setState({
-              conditions: {
-                weather: response.data.weather[0],
-                temp: response.data.main.temp,
-                sunrise: response.data.sys.sunrise,
-                sunset: response.data.sys.sunset
+            console.log("AXIOS: Successfull Response");
+            this.setState(
+              {
+                conditions: {
+                  weather: response.data.weather[0],
+                  temp: response.data.main.temp,
+                  sunrise: response.data.sys.sunrise,
+                  sunset: response.data.sys.sunset
+                },
+                location: {
+                  lat,
+                  lng
+                }
               },
-              location: {
-                lat,
-                lng
-              }
-            });
+              this.getAddress
+            );
           })
           .catch(error => {
             console.log(`Error: No Response: ${error}`);
@@ -64,14 +81,13 @@ class App extends Component {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-
-    this.getAddress();
   }
 
   render() {
     return (
       <div className="App">
         <Header title="FCC React Weather App" />
+        <Conditions conditions={this.state.conditions} />
         <Location location={this.state.location} address={this.state.address} />
       </div>
     );
