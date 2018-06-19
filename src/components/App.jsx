@@ -8,9 +8,14 @@ class App extends Component {
   state = {
     conditions: {
       weather: {
+        id: null,
         main: null,
         description: null,
         icon: null
+      },
+      sys: {
+        sunrise: null,
+        sunset: null
       }
     },
     location: {},
@@ -30,7 +35,7 @@ class App extends Component {
         if (status === "OK") {
           if (results[0]) {
             console.log("GEOCODER: Status OK");
-            console.log(results[0]);
+
             this.setState({
               address: {
                 formattedAddress: results[0].formatted_address,
@@ -53,18 +58,20 @@ class App extends Component {
         const url = "https://api.openweathermap.org/data/2.5/weather?";
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
-        const API = "aee8fa9823413f068bcc925671aeb2ac";
         const units = "metric";
+        const API = "aee8fa9823413f068bcc925671aeb2ac";
 
         axios
           .get(`${url}lat=${lat}&lon=${lng}&units=${units}&APPID=${API}`)
           .then(response => {
             console.log("AXIOS: Successfull Response");
+
             this.setState(
               {
                 conditions: {
                   weather: response.data.weather[0],
                   temp: response.data.main.temp,
+                  humidity: response.data.main.humidity,
                   sunrise: response.data.sys.sunrise,
                   sunset: response.data.sys.sunset
                 },
