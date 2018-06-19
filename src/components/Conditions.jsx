@@ -66,20 +66,6 @@ class Conditions extends Component {
     }
   };
 
-  calculateTime = unixTime => {
-    const date = new Date(unixTime * 1000);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const formattedTime = `${hours}:${minutes}`;
-    // const unixSunrise = this.props.conditions.sunrise;
-    // const unixSunset = this.props.conditions.sunset;
-    // const sunriseDate = new Date(unixSunrise * 1000);
-    // const sunsetDate = new Date(unixSunrise * 1000);
-    // console.log(sunriseDate.getHours());
-    // console.log(sunsetDate);
-    return formattedTime;
-  };
-
   render() {
     const weather = this.props.conditions.weather;
 
@@ -95,7 +81,7 @@ class Conditions extends Component {
         {this.displayTemperature()}
         <p>Humidity: {this.props.conditions.humidity}%</p>
 
-        {this.calculateTime(this.props.conditions.sunrise)}
+        {this.props.formatUnixTime(this.props.conditions.sunrise)}
       </div>
     );
   }
