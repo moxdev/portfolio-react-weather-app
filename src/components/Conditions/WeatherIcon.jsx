@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-class Conditions extends Component {
-  displayIcon = () => {
-    const iconID = this.props.conditions.weather.icon;
+class WeatherIcon extends Component {
+  displayWeatherIcon = () => {
+    const iconID = this.props.weatherIcon;
     const iconPath = window.location.origin + "/imgs/icons/";
 
     switch (iconID) {
@@ -51,40 +51,9 @@ class Conditions extends Component {
     }
   };
 
-  displayTemperature = () => {
-    const celsius = this.props.conditions.temp;
-    const fahrenheit = celsius * 1.8 + 32;
-
-    if (!celsius) return null;
-
-    if (celsius) {
-      return (
-        <div className="temperature">
-          {celsius.toFixed(0)}&deg;C {fahrenheit.toFixed(0)}&deg;F
-        </div>
-      );
-    }
-  };
-
   render() {
-    const weather = this.props.conditions.weather;
-
-    return (
-      <div className="conditions">
-        <h2>Conditions</h2>
-        <div className="weather">
-          {this.displayIcon()}
-          <p>
-            {weather.main}, {weather.description}
-          </p>
-        </div>
-        {this.displayTemperature()}
-        <p>Humidity: {this.props.conditions.humidity}%</p>
-
-        {this.props.formatUnixTime(this.props.conditions.sunrise)}
-      </div>
-    );
+    return <div className="weather-icon">{this.displayWeatherIcon()}</div>;
   }
 }
 
-export default Conditions;
+export default WeatherIcon;

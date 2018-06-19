@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import Conditions from "./Conditions";
+import Conditions from "./Conditions/Conditions";
 import Location from "./Location";
 import axios from "axios";
 

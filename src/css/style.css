@@ -180,6 +180,10 @@ input::-moz-focus-inner {
 .App-intro {
   font-size: large;
 }
+img {
+  -webkit-filter: invert(0.5) sepia(1) saturate(5) hue-rotate(60deg);
+          filter: invert(0.5) sepia(1) saturate(5) hue-rotate(60deg);
+}
 @-webkit-keyframes App-logo-spin {
   from {
     -webkit-transform: rotate(0deg);
