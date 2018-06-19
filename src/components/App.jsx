@@ -50,12 +50,14 @@ class App extends Component {
   componentDidMount() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
-        const url = "https://fcc-weather-api.glitch.me/api/current?";
+        const url = "https://api.openweathermap.org/data/2.5/weather?";
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
+        const API = "aee8fa9823413f068bcc925671aeb2ac";
+        const units = "metric";
 
         axios
-          .get(`${url}lat=${lat}&lon=${lng}`)
+          .get(`${url}lat=${lat}&lon=${lng}&units=${units}&APPID=${API}`)
           .then(response => {
             console.log("AXIOS: Successfull Response");
             this.setState(

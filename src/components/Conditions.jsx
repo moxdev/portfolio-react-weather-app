@@ -18,12 +18,13 @@ class Conditions extends Component {
 
   render() {
     const weather = this.props.conditions.weather;
+    const image = `https://openweathermap.org/img/w/${weather.icon}.png`;
 
     return (
       <div className="conditions">
         <h2>Conditions</h2>
         <div className="weather">
-          <img src={weather.icon} alt="weather-icon" />
+          <img src={image} alt="weather-icon" />
           <p>
             {weather.main}, {weather.description}
           </p>
