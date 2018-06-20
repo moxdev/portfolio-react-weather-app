@@ -1,9 +1,25 @@
 /*
 * App Styles
 */
+$color__brand-1 = #3AAFA9
+$color__brand-2 = #2B7A78
+$color__brand-3 = #17252A
+$color__brand-4 = #DEF2F1
+$color__brand-5 = #FEFFFF
+$color__background =  #3AAFA9
+$color__text =  $color__brand-3
+
+body {
+  background-color: $color__brand-1
+  color: $color__text
+  width: 100vw
+  height: 100vh
+}
 
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  // background-color: $color__background
 }
 
 .App-logo {
@@ -12,7 +28,7 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: $color__brand-3;
   padding: 20px;
   color: white;
 }
@@ -30,6 +46,23 @@
   to { transform: rotate(360deg); }
 }
 
-img {
-  filter: invert(.5) sepia(1) saturate(5) hue-rotate(60deg);
+
+
+h1 {
+
 }
+
+.header-address
+  span
+    display: block
+  .of
+    margin-bottom: 10px
+
+
+.weather-icon
+  img
+    width: 300px;
+    filter: invert(.75) sepia(1) saturate(5) hue-rotate(10deg)
+
+.temperature
+  margin-top: -2em

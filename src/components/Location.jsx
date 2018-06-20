@@ -2,18 +2,28 @@ import React, { Component } from "react";
 
 class Location extends Component {
   render() {
+    const address = this.props.address;
+    const lat = this.props.location.lat;
+    const lng = this.props.location.lng;
+    let displayLocation;
+
+    if (lat || lng) {
+      displayLocation = `Lattitude: ${lat}, Longitude: ${lng}`;
+    } else {
+      displayLocation = null;
+    }
+
     return (
       <div className="location">
         <h3>Current Location</h3>
         <div className="address">
-          <span>{this.props.address.city}, </span>
-          <span>{this.props.address.state}</span>
-          <span> {this.props.address.zip}</span>
+          <p>{address}</p>
+          <small>
+            <em>*Addresses are approximate and may not be correct</em>
+          </small>
         </div>
         <div className="coordinates">
-          <p>
-            {this.props.location.lat}, {this.props.location.lng}
-          </p>
+          <p>{displayLocation}</p>
         </div>
       </div>
     );

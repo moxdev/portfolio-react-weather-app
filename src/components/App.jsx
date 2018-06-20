@@ -21,9 +21,14 @@ class App extends Component {
     },
     location: {
       lat: null,
-      lon: null
+      lng: null
     },
-    address: ""
+    address: {
+      formattedAddress: null,
+      city: null,
+      state: null,
+      zip: null
+    }
   };
 
   getAddress = () => {
@@ -39,13 +44,14 @@ class App extends Component {
         if (status === "OK") {
           if (results[0]) {
             console.log("GEOCODER: Status OK");
+            console.log(results[0]);
 
             this.setState({
               address: {
                 formattedAddress: results[0].formatted_address,
-                city: results[0].address_components[1].long_name,
-                state: results[0].address_components[4].long_name,
-                zip: results[0].address_components[6].long_name
+                city: results[0].address_components[2].long_name,
+                state: results[0].address_components[5].long_name,
+                zip: results[0].address_components[7].long_name
               }
             });
           } else {
@@ -64,9 +70,10 @@ class App extends Component {
         const lng = position.coords.longitude;
         const units = "metric";
         const API = "aee8fa9823413f068bcc925671aeb2ac";
+        const URL = `${url}lat=${lat}&lon=${lng}&units=${units}&APPID=${API}`;
 
         axios
-          .get(`${url}lat=${lat}&lon=${lng}&units=${units}&APPID=${API}`)
+          .get(URL)
           .then(response => {
             console.log("AXIOS: Successfull Response");
 
@@ -99,13 +106,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header title="FCC React Weather App" />
-        <Conditions conditions={this.state.conditions} />
-        <SunriseSunset
-          sunrise={this.state.conditions.sunrise}
-          sunset={this.state.conditions.sunset}
+        <Header
+          title="Current Weather Conditions"
+          address={this.state.address}
         />
-        <Location location={this.state.location} address={this.state.address} />
+        <main role="main">
+          <Conditions conditions={this.state.conditions} />
+          <SunriseSunset
+            sunrise={this.state.conditions.sunrise}
+            sunset={this.state.conditions.sunset}
+          />
+          <Location
+            location={this.state.location}
+            address={this.state.address.formattedAddress}
+          />
+        </main>
       </div>
     );
   }

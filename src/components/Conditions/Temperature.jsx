@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+// eslint-disable-next-line
 import celsiusIcon from "../../assets/icons/Degrees-Celcius.svg";
+// eslint-disable-next-line
 import fahrenheitIcon from "../../assets/icons/Degrees-Fahrenheit.svg";
 
 class Temperature extends Component {
@@ -12,11 +14,11 @@ class Temperature extends Component {
     if (celsius) {
       return (
         <React.Fragment>
-          <span>
+          <span className="celsius">
             {celsius.toFixed(0)}&deg;C
             {/* <img src={celsiusIcon} alt="" /> */}
           </span>
-          <span>
+          <span className="fahrenheit">
             {fahrenheit.toFixed(0)}&deg;F
             {/* <img src={fahrenheitIcon} alt="" /> */}
           </span>
