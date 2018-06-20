@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Header from "./Header";
 import Conditions from "./Conditions/Conditions";
+import SunriseSunset from "./SunriseSunset";
 import Location from "./Location";
-import axios from "axios";
 
 class App extends Component {
   state = {
@@ -55,15 +56,6 @@ class App extends Component {
     );
   };
 
-  formatUnixTime = unixTime => {
-    const date = new Date(unixTime * 1000);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const formattedTime = `${hours}:${minutes}`;
-
-    return formattedTime;
-  };
-
   componentDidMount() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -108,9 +100,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header title="FCC React Weather App" />
-        <Conditions
-          conditions={this.state.conditions}
-          formatUnixTime={this.formatUnixTime}
+        <Conditions conditions={this.state.conditions} />
+        <SunriseSunset
+          sunrise={this.state.conditions.sunrise}
+          sunset={this.state.conditions.sunset}
         />
         <Location location={this.state.location} address={this.state.address} />
       </div>

@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import WeatherIcon from "./WeatherIcon";
 import Temperature from "./Temperature";
 import WeatherConditions from "./WeatherConditions";
-import SunriseSunset from "./SunriseSunset";
 
 class Conditions extends Component {
   render() {
+    const weatherIcon = this.props.conditions.weather.icon;
+    const temp = this.props.conditions.temp;
+    const weather = this.props.conditions.weather;
+    const humidity = this.props.conditions.humidity;
+
     return (
       <div className="conditions">
-        <WeatherIcon weatherIcon={this.props.conditions.weather.icon} />
-        <Temperature temp={this.props.conditions.temp} />
-        <WeatherConditions
-          weather={this.props.conditions.weather}
-          humidity={this.props.conditions.humidity}
-        />
-        <SunriseSunset formatUnixTime={this.props.formatUnixTime} />
+        <WeatherIcon weatherIcon={weatherIcon} />
+        <Temperature temp={temp} />
+        <WeatherConditions weather={weather} humidity={humidity} />
       </div>
     );
   }
