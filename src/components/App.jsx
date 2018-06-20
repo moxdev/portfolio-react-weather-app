@@ -13,12 +13,15 @@ class App extends Component {
         description: null,
         icon: null
       },
-      sys: {
-        sunrise: null,
-        sunset: null
-      }
+      temp: null,
+      humidity: null,
+      sunrise: null,
+      sunset: null
     },
-    location: {},
+    location: {
+      lat: null,
+      lon: null
+    },
     address: ""
   };
 

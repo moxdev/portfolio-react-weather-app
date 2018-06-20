@@ -6,8 +6,6 @@ import SunriseSunset from "./SunriseSunset";
 
 class Conditions extends Component {
   render() {
-    const weather = this.props.conditions.weather;
-
     return (
       <div className="conditions">
         <WeatherIcon weatherIcon={this.props.conditions.weather.icon} />
