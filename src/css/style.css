@@ -185,7 +185,11 @@ body {
           filter: invert(0.75) sepia(1) saturate(5) hue-rotate(10deg);
 }
 .temperature {
+  font-size: 2em;
   margin-top: -2em;
+}
+.temperature .degrees {
+  margin: 0 1em;
 }
 @-webkit-keyframes App-logo-spin {
   from {

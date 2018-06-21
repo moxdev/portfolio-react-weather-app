@@ -68,9 +68,8 @@ class App extends Component {
         const url = "https://api.openweathermap.org/data/2.5/weather?";
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
-        const units = "metric";
         const API = "aee8fa9823413f068bcc925671aeb2ac";
-        const URL = `${url}lat=${lat}&lon=${lng}&units=${units}&APPID=${API}`;
+        const URL = `${url}lat=${lat}&lon=${lng}&APPID=${API}`;
 
         axios
           .get(URL)
