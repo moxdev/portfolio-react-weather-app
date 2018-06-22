@@ -7,6 +7,21 @@ import Location from "./Location";
 
 class App extends Component {
   state = {
+    location: {
+      lat: null,
+      lng: null
+    },
+    temp: {
+      fahrenheit: 0,
+      celsius: 0,
+      kelvin: 0
+    },
+    degrees: {
+      showC: false,
+      showF: true,
+      showK: false
+    },
+    displayTemperature: 0,
     conditions: {
       weather: {
         id: null,
@@ -14,14 +29,9 @@ class App extends Component {
         description: null,
         icon: null
       },
-      temp: null,
       humidity: null,
       sunrise: null,
       sunset: null
-    },
-    location: {
-      lat: null,
-      lng: null
     },
     address: {
       formattedAddress: null,
@@ -44,7 +54,6 @@ class App extends Component {
         if (status === "OK") {
           if (results[0]) {
             console.log("GEOCODER: Status OK");
-            console.log(results[0]);
 
             this.setState({
               address: {
@@ -80,7 +89,6 @@ class App extends Component {
               {
                 conditions: {
                   weather: response.data.weather[0],
-                  temp: response.data.main.temp,
                   humidity: response.data.main.humidity,
                   sunrise: response.data.sys.sunrise,
                   sunset: response.data.sys.sunset
@@ -88,7 +96,13 @@ class App extends Component {
                 location: {
                   lat,
                   lng
-                }
+                },
+                temp: {
+                  fahrenheit: response.data.main.temp * 1.8 - 459.67,
+                  celsius: response.data.main.temp - 273.15,
+                  kelvin: response.data.main.temp
+                },
+                displayTemperature: response.data.main.temp * 1.8 - 459.67
               },
               this.getAddress
             );
@@ -102,6 +116,49 @@ class App extends Component {
     }
   }
 
+  showCelsius = e => {
+    e.preventDefault();
+
+    const celsius = this.state.temp.celsius;
+
+    this.setState({
+      displayTemperature: celsius,
+      degrees: {
+        showF: false,
+        showK: false,
+        showC: true
+      }
+    });
+  };
+
+  showFahrenheit = e => {
+    e.preventDefault();
+    const fahrenheit = this.state.temp.fahrenheit;
+
+    this.setState({
+      displayTemperature: fahrenheit,
+      degrees: {
+        showF: true,
+        showK: false,
+        showC: false
+      }
+    });
+  };
+
+  showKelvin = e => {
+    e.preventDefault();
+    const kelvin = this.state.temp.kelvin;
+
+    this.setState({
+      displayTemperature: kelvin,
+      degrees: {
+        showF: false,
+        showK: true,
+        showC: false
+      }
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -110,7 +167,14 @@ class App extends Component {
           address={this.state.address}
         />
         <main role="main">
-          <Conditions conditions={this.state.conditions} />
+          <Conditions
+            conditions={this.state.conditions}
+            temp={this.state.displayTemperature}
+            degrees={this.state.degrees}
+            showCelsius={this.showCelsius}
+            showFahrenheit={this.showFahrenheit}
+            showKelvin={this.showKelvin}
+          />
           <SunriseSunset
             sunrise={this.state.conditions.sunrise}
             sunset={this.state.conditions.sunset}
