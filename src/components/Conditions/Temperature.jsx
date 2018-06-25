@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "../Button/Button";
 
 class Temperature extends Component {
   displayTemperature = () => {
@@ -27,34 +28,18 @@ class Temperature extends Component {
     const showFahrenheit = this.props.showFahrenheit;
     const showKelvin = this.props.showKelvin;
 
-    const styles = {
-      backgroundColor: "black",
-      color: "#fff",
-      padding: ".25em 1em",
-      border: "none"
-    };
-
     return (
       <div className="temperature">
         <h2>Current Temperature</h2>
         {this.displayTemperature()}
-        <button
-          style={styles}
-          onClick={showFahrenheit}
-          className="degrees fahrenheit"
-        >
-          Fahrenheit
-        </button>
-        <button
-          style={styles}
-          onClick={showCelsius}
-          className="degrees celsius"
-        >
-          Celsius
-        </button>
-        <button style={styles} onClick={showKelvin} className="degrees kelvin">
-          Kelvin
-        </button>
+
+        <Button
+          classes="degrees fahrenheit"
+          func={showFahrenheit}
+          text="Fahrenheit"
+        />
+        <Button classes="degrees celsius" func={showCelsius} text="Celsius" />
+        <Button classes="degrees kelvin" func={showKelvin} text="Kelvin" />
       </div>
     );
   }
