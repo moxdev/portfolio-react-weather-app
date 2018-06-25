@@ -8,10 +8,6 @@ class Temperature extends Component {
     const showF = this.props.degrees.showF;
     const showK = this.props.degrees.showK;
 
-    console.log("C = " + showC);
-    console.log("F = " + showF);
-    console.log("K = " + showK);
-
     if (showK && temp !== 0) {
       return <p>{temp.toFixed(0)}&deg;K</p>;
     } else if (showC && temp !== 0) {
@@ -30,7 +26,6 @@ class Temperature extends Component {
 
     return (
       <div className="temperature">
-        <h2>Current Temperature</h2>
         {this.displayTemperature()}
 
         <Button
