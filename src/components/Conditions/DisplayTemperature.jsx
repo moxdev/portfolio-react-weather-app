@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Button from "../Button/Button";
-import WeatherConditions from "./WeatherConditions";
 
 class DisplayTemperature extends Component {
   displayDegrees = () => {
@@ -10,17 +8,17 @@ class DisplayTemperature extends Component {
     const showK = this.props.showK;
 
     if (showK && temp !== 0) {
-      return <h2>{temp.toFixed(0)}&deg;K</h2>;
+      return <p>{temp.toFixed(0)}&deg;K</p>;
     } else if (showC && temp !== 0) {
-      return <h2>{temp.toFixed(0)}&deg;C</h2>;
+      return <p>{temp.toFixed(0)}&deg;C</p>;
     } else if (showF && temp !== 0) {
-      return <h2>{temp.toFixed(0)}&deg;F</h2>;
+      return <p>{temp.toFixed(0)}&deg;F</p>;
     } else {
       return null;
     }
   };
   render() {
-    return <div className="temp">{this.displayDegrees()}</div>;
+    return <div className="degrees">{this.displayDegrees()}</div>;
   }
 }
 

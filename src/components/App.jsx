@@ -4,7 +4,8 @@ import Header from "./Header";
 import Conditions from "./Conditions/Conditions";
 import SunriseSunset from "./SunriseSunset";
 import Location from "./Location";
-import Loader from "./Loader/Loader";
+import Loader from "./Loader";
+import Footer from "./Footer";
 
 class App extends Component {
   state = {
@@ -193,6 +194,7 @@ class App extends Component {
             </React.Fragment>
           )}
         </main>
+        <Footer />
       </div>
     );
   }

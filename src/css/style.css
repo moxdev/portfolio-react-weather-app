@@ -147,13 +147,18 @@ template {
 [hidden] {
   display: none;
 }
+html {
+  height: 100%;
+}
 body {
   background-color: #3aafa9;
   color: #17252a;
-  width: 100vw;
-  height: 100vh;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 .App {
+  display: relative;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
 }
@@ -173,6 +178,9 @@ body {
 .App-intro {
   font-size: large;
 }
+.loading-spinner {
+  margin-top: 20vh;
+}
 .header-address span {
   display: block;
 }
@@ -184,18 +192,38 @@ body {
   -webkit-filter: invert(0.75) sepia(1) saturate(5) hue-rotate(10deg);
           filter: invert(0.75) sepia(1) saturate(5) hue-rotate(10deg);
 }
-.temperature {
+.conditions {
   margin-top: -4em;
 }
-.temperature h2 {
-  font-size: 3em;
-}
-.temperature .degrees {
+.conditions button {
   margin: 0 1em;
+}
+.degrees p {
+  font-size: 5em;
+  margin: 0 0 1rem 0;
+}
+.weather-description {
+  margin-bottom: 2em;
+  font-size: 1.4em;
+}
+.weather-description .desc,
+.weather-description .humidity {
+  margin: 1em;
+  color: #def2f1;
 }
 .location,
 .sunrise-sunset {
   margin-top: 2em;
+}
+footer {
+  position: fixed;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #def2f1;
+  text-align: center;
 }
 @-webkit-keyframes App-logo-spin {
   from {
@@ -216,7 +244,4 @@ body {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
-}
-.loading-spinner {
-  margin-top: 20vh;
 }

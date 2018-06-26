@@ -9,14 +9,20 @@ $color__brand-5 = #FEFFFF
 $color__background =  #3AAFA9
 $color__text =  $color__brand-3
 
+html {
+  height: 100%;
+}
+
 body {
   background-color: $color__brand-1
   color: $color__text
-  width: 100vw
-  height: 100vh
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 .App {
+  display: relative
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   // background-color: $color__background
@@ -52,6 +58,9 @@ h1 {
 
 }
 
+.loading-spinner
+  margin-top: 20vh
+
 .header-address
   span
     display: block
@@ -64,13 +73,37 @@ h1 {
     width: 300px;
     filter: invert(.75) sepia(1) saturate(5) hue-rotate(10deg)
 
-.temperature
+.conditions
   margin-top: -4em
-  h2
-    font-size: 3em
 
-  .degrees
+  button
     margin: 0 1em
+
+.degrees p
+  font-size: 5em
+  margin: 0 0 1rem 0
+
+.weather-description
+  margin-bottom: 2em
+  font-size: 1.4em
+
+  .desc, .humidity
+    margin: 1em
+    color: $color__brand-4
+
+  .highlight
+    // color: yellow
 
 .location, .sunrise-sunset
   margin-top: 2em
+
+
+footer
+  position: fixed
+  width: 100%
+  right: 0
+  bottom: 0
+  left: 0
+  padding: 1rem
+  background-color: $color__brand-4
+  text-align: center;

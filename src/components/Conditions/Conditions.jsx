@@ -14,7 +14,7 @@ class Conditions extends Component {
     const displayKelvin = this.props.displayKelvin;
 
     return (
-      <div className="conditions">
+      <div className="weather">
         <WeatherIcon weatherIcon={weatherIcon} />
         <Temperature
           temp={temp}
