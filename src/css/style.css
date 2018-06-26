@@ -185,11 +185,17 @@ body {
           filter: invert(0.75) sepia(1) saturate(5) hue-rotate(10deg);
 }
 .temperature {
-  font-size: 2em;
-  margin-top: -2em;
+  margin-top: -4em;
+}
+.temperature h2 {
+  font-size: 3em;
 }
 .temperature .degrees {
   margin: 0 1em;
+}
+.location,
+.sunrise-sunset {
+  margin-top: 2em;
 }
 @-webkit-keyframes App-logo-spin {
   from {
@@ -210,4 +216,7 @@ body {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+.loading-spinner {
+  margin-top: 20vh;
 }

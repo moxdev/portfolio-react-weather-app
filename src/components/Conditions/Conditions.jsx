@@ -10,9 +10,9 @@ class Conditions extends Component {
     const humidity = this.props.conditions.humidity;
     const temp = this.props.temp;
     const degrees = this.props.degrees;
-    const showCelsius = this.props.showCelsius;
-    const showFahrenheit = this.props.showFahrenheit;
-    const showKelvin = this.props.showKelvin;
+    const displayCelsius = this.props.displayCelsius;
+    const displayFahrenheit = this.props.displayFahrenheit;
+    const displayKelvin = this.props.displayKelvin;
 
     return (
       <div className="conditions">
@@ -20,11 +20,12 @@ class Conditions extends Component {
         <Temperature
           temp={temp}
           degrees={degrees}
-          showCelsius={showCelsius}
-          showFahrenheit={showFahrenheit}
-          showKelvin={showKelvin}
+          displayCelsius={displayCelsius}
+          displayFahrenheit={displayFahrenheit}
+          displayKelvin={displayKelvin}
+          weather={weather}
+          humidity={humidity}
         />
-        <WeatherConditions weather={weather} humidity={humidity} />
       </div>
     );
   }

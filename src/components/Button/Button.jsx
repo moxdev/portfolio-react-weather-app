@@ -10,7 +10,8 @@ class Button extends Component {
       backgroundColor: "black",
       color: "#fff",
       padding: ".25em 1em",
-      border: "none"
+      border: "none",
+      fontSize: "1.5em"
     };
     return (
       <button className={classes} onClick={func} style={styles}>

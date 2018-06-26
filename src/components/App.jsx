@@ -4,6 +4,7 @@ import Header from "./Header";
 import Conditions from "./Conditions/Conditions";
 import SunriseSunset from "./SunriseSunset";
 import Location from "./Location";
+import Loader from "./Loader/Loader";
 
 class App extends Component {
   state = {
@@ -38,7 +39,8 @@ class App extends Component {
       city: null,
       state: null,
       zip: null
-    }
+    },
+    loading: true
   };
 
   getAddress = () => {
@@ -102,7 +104,8 @@ class App extends Component {
                   celsius: response.data.main.temp - 273.15,
                   kelvin: response.data.main.temp
                 },
-                displayTemperature: response.data.main.temp * 1.8 - 459.67
+                displayTemperature: response.data.main.temp * 1.8 - 459.67,
+                loading: false
               },
               this.getAddress
             );
@@ -116,7 +119,7 @@ class App extends Component {
     }
   }
 
-  showCelsius = e => {
+  displayCelsius = e => {
     e.preventDefault();
 
     const celsius = this.state.temp.celsius;
@@ -131,7 +134,7 @@ class App extends Component {
     });
   };
 
-  showFahrenheit = e => {
+  displayFahrenheit = e => {
     e.preventDefault();
     const fahrenheit = this.state.temp.fahrenheit;
 
@@ -145,7 +148,7 @@ class App extends Component {
     });
   };
 
-  showKelvin = e => {
+  displayKelvin = e => {
     e.preventDefault();
     const kelvin = this.state.temp.kelvin;
 
@@ -167,22 +170,28 @@ class App extends Component {
           address={this.state.address}
         />
         <main role="main">
-          <Conditions
-            conditions={this.state.conditions}
-            temp={this.state.displayTemperature}
-            degrees={this.state.degrees}
-            showCelsius={this.showCelsius}
-            showFahrenheit={this.showFahrenheit}
-            showKelvin={this.showKelvin}
-          />
-          <SunriseSunset
-            sunrise={this.state.conditions.sunrise}
-            sunset={this.state.conditions.sunset}
-          />
-          <Location
-            location={this.state.location}
-            address={this.state.address.formattedAddress}
-          />
+          {this.state.loading ? (
+            <Loader />
+          ) : (
+            <React.Fragment>
+              <Conditions
+                conditions={this.state.conditions}
+                temp={this.state.displayTemperature}
+                degrees={this.state.degrees}
+                displayCelsius={this.displayCelsius}
+                displayFahrenheit={this.displayFahrenheit}
+                displayKelvin={this.displayKelvin}
+              />
+              <SunriseSunset
+                sunrise={this.state.conditions.sunrise}
+                sunset={this.state.conditions.sunset}
+              />
+              <Location
+                location={this.state.location}
+                address={this.state.address.formattedAddress}
+              />
+            </React.Fragment>
+          )}
         </main>
       </div>
     );
