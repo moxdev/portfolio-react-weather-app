@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import WeatherIcon from "./WeatherIcon";
 import Temperature from "./Temperature";
-import WeatherConditions from "./WeatherConditions";
 
 class Conditions extends Component {
   render() {

@@ -1,60 +1,42 @@
 import React, { Component } from "react";
-import ShowKelvin from "./ShowKelvin";
-import ShowFahrenheit from "./ShowFahrenheit";
-import ShowCelsius from "./ShowCelsius";
+import DisplayTemperature from "./DisplayTemperature";
+import Button from "../Button/Button";
+import WeatherConditions from "./WeatherConditions";
 
 class Temperature extends Component {
-  displayTemperature = () => {
+  render() {
     const temp = this.props.temp;
-    const showC = this.props.degrees.showC;
-    const showF = this.props.degrees.showF;
-    const showK = this.props.degrees.showK;
     const displayCelsius = this.props.displayCelsius;
     const displayFahrenheit = this.props.displayFahrenheit;
     const displayKelvin = this.props.displayKelvin;
+    const showC = this.props.degrees.showC;
+    const showF = this.props.degrees.showF;
+    const showK = this.props.degrees.showK;
     const weather = this.props.weather;
     const humidity = this.props.humidity;
 
-    if (showK && temp !== 0) {
-      return (
-        <ShowKelvin
+    return (
+      <div className="temperature">
+        <DisplayTemperature
           temp={temp}
-          displayCelsius={displayCelsius}
-          displayFahrenheit={displayFahrenheit}
-          displayKelvin={displayKelvin}
-          weather={weather}
-          humidity={humidity}
+          showC={showC}
+          showF={showF}
+          showK={showK}
         />
-      );
-    } else if (showC && temp !== 0) {
-      return (
-        <ShowCelsius
-          temp={temp}
-          displayCelsius={displayCelsius}
-          displayFahrenheit={displayFahrenheit}
-          displayKelvin={displayKelvin}
-          weather={weather}
-          humidity={humidity}
+        <WeatherConditions weather={weather} humidity={humidity} />
+        <Button
+          classes="degrees fahrenheit"
+          func={displayFahrenheit}
+          text="Fahrenheit"
         />
-      );
-    } else if (showF && temp !== 0) {
-      return (
-        <ShowFahrenheit
-          temp={temp}
-          displayCelsius={displayCelsius}
-          displayFahrenheit={displayFahrenheit}
-          displayKelvin={displayKelvin}
-          weather={weather}
-          humidity={humidity}
+        <Button
+          classes="degrees celsius"
+          func={displayCelsius}
+          text="Celsius"
         />
-      );
-    } else {
-      return null;
-    }
-  };
-
-  render() {
-    return <div className="temperature">{this.displayTemperature()}</div>;
+        <Button classes="degrees kelvin" func={displayKelvin} text="Kelvin" />
+      </div>
+    );
   }
 }
 
