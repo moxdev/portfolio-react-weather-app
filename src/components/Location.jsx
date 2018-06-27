@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Location extends Component {
   render() {
@@ -31,3 +32,9 @@ class Location extends Component {
 }
 
 export default Location;
+
+Location.propTypes = {
+  address: PropTypes.string,
+  lat: PropTypes.number,
+  lng: PropTypes.number
+};

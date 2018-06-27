@@ -26,5 +26,10 @@ class Header extends Component {
 export default Header;
 
 Header.propTypes = {
-  address: PropTypes.object.isRequired
+  address: PropTypes.shape({
+    city: PropTypes.string,
+    state: PropTypes.string,
+    zip: PropTypes.string
+  }),
+  title: PropTypes.string
 };

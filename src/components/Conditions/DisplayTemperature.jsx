@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class DisplayTemperature extends Component {
   displayDegrees = () => {
@@ -24,12 +25,9 @@ class DisplayTemperature extends Component {
 
 export default DisplayTemperature;
 
-// document.querySelector(".celsius").classList.remove("active");
-// document.querySelector(".kelvin").classList.toggle("active");
-// document.querySelector(".fahrenheit").classList.remove("active");
-// document.querySelector(".celsius").classList.toggle("active");
-// document.querySelector(".kelvin").classList.remove("active");
-// document.querySelector(".fahrenheit").classList.remove("active");
-// document.querySelector(".celsius").classList.remove("active");
-// document.querySelector(".kelvin").classList.remove("active");
-// document.querySelector(".fahrenheit").classList.toggle("active");
+DisplayTemperature.propTypes = {
+  temp: PropTypes.number.isRequired,
+  showC: PropTypes.bool,
+  showF: PropTypes.bool,
+  showK: PropTypes.bool
+};

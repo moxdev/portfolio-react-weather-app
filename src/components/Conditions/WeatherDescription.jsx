@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class WeatherDescription extends Component {
   capitalizeString = str => {
@@ -33,3 +34,10 @@ class WeatherDescription extends Component {
 }
 
 export default WeatherDescription;
+
+WeatherDescription.propTypes = {
+  humidity: PropTypes.number,
+  weather: PropTypes.shape({
+    description: PropTypes.string
+  })
+};

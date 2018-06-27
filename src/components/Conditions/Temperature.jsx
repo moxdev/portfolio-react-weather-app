@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import DisplayTemperature from "./DisplayTemperature";
 import Button from "../Button/Button";
 import WeatherDescription from "./WeatherDescription";
@@ -48,3 +49,15 @@ class Temperature extends Component {
 }
 
 export default Temperature;
+
+Temperature.propTypes = {
+  displayCelsius: PropTypes.func.isRequired,
+  displayFahrenheit: PropTypes.func.isRequired,
+  displayKelvin: PropTypes.func.isRequired,
+  humidity: PropTypes.number.isRequired,
+  showC: PropTypes.bool,
+  showF: PropTypes.bool,
+  showK: PropTypes.bool,
+  temp: PropTypes.number.isRequired,
+  weather: PropTypes.object.isRequired
+};

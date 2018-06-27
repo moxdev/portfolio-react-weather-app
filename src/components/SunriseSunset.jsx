@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class SunriseSunset extends Component {
   formatSunriseTime = sunrise => {
@@ -37,3 +38,8 @@ class SunriseSunset extends Component {
 }
 
 export default SunriseSunset;
+
+SunriseSunset.propTypes = {
+  sunrise: PropTypes.number,
+  sunset: PropTypes.number
+};

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
 import WeatherIcon from "./WeatherIcon";
 import Temperature from "./Temperature";
 
@@ -31,3 +33,17 @@ class Conditions extends Component {
 }
 
 export default Conditions;
+
+Conditions.propTypes = {
+  conditions: PropTypes.shape({
+    humidity: PropTypes.number,
+    weather: PropTypes.shape({
+      icon: PropTypes.string
+    })
+  }),
+  temp: PropTypes.number.isRequired,
+  degrees: PropTypes.object.isRequired,
+  displayCelsius: PropTypes.func.isRequired,
+  displayFahrenheit: PropTypes.func.isRequired,
+  displayKelvin: PropTypes.func.isRequired
+};

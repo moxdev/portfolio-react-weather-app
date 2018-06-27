@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class WeatherIcon extends Component {
   displayWeatherIcon = () => {
@@ -57,3 +58,7 @@ class WeatherIcon extends Component {
 }
 
 export default WeatherIcon;
+
+WeatherIcon.propTypes = {
+  weatherIcon: PropTypes.string
+};
