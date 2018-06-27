@@ -7,11 +7,7 @@ class Button extends Component {
     const func = this.props.func;
     const text = this.props.text;
     const styles = {
-      backgroundColor: "black",
-      color: "#fff",
-      padding: ".25em 1em",
-      border: "none",
-      fontSize: "1.5em"
+
     };
     return (
       <button className={classes} onClick={func} style={styles}>

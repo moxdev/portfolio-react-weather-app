@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class WeatherDescription extends Component {
-  uppercase = str => {
+  capitalizeString = str => {
     str = str.toString();
     str = str.split(" ");
 
@@ -19,15 +19,12 @@ class WeatherDescription extends Component {
     return (
       <div className="weather-description">
         {description === null ? null : (
-          <span className="desc">
-            Conditions:{" "}
-            <span className="highlight">{this.uppercase(description)}</span>
-          </span>
+          <span className="desc">{this.capitalizeString(description)}</span>
         )}
 
         {humidity === null ? null : (
           <span className="humidity">
-            Humidity: <span className="highlight">{humidity}</span>
+            Humidity: <span className="highlight">{humidity}%</span>
           </span>
         )}
       </div>

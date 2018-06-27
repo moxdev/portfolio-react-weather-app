@@ -67,6 +67,9 @@ h1 {
   .of
     margin-bottom: 10px
 
+.container
+  max-width: 900px
+  margin: 0 auto
 
 .weather-icon
   img
@@ -78,6 +81,16 @@ h1 {
 
   button
     margin: 0 1em
+    cursor: pointer
+    background-color: $color__brand-3
+    color: #fff
+    padding: .25em 1em
+    border: 1px solid $color__brand-3
+    font-size: 1.5em
+
+    &:hover
+      background-color $color__brand-4
+      color: black
 
 .degrees p
   font-size: 5em
@@ -90,9 +103,7 @@ h1 {
   .desc, .humidity
     margin: 1em
     color: $color__brand-4
-
-  .highlight
-    // color: yellow
+    letter-spacing: 1px
 
 .location, .sunrise-sunset
   margin-top: 2em

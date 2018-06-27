@@ -171,28 +171,30 @@ class App extends Component {
           address={this.state.address}
         />
         <main role="main">
-          {this.state.loading ? (
-            <Loader />
-          ) : (
-            <React.Fragment>
-              <Conditions
-                conditions={this.state.conditions}
-                temp={this.state.displayTemperature}
-                degrees={this.state.degrees}
-                displayCelsius={this.displayCelsius}
-                displayFahrenheit={this.displayFahrenheit}
-                displayKelvin={this.displayKelvin}
-              />
-              <SunriseSunset
-                sunrise={this.state.conditions.sunrise}
-                sunset={this.state.conditions.sunset}
-              />
-              <Location
-                location={this.state.location}
-                address={this.state.address.formattedAddress}
-              />
-            </React.Fragment>
-          )}
+          <div className="container">
+            {this.state.loading ? (
+              <Loader />
+            ) : (
+              <React.Fragment>
+                <Conditions
+                  conditions={this.state.conditions}
+                  temp={this.state.displayTemperature}
+                  degrees={this.state.degrees}
+                  displayCelsius={this.displayCelsius}
+                  displayFahrenheit={this.displayFahrenheit}
+                  displayKelvin={this.displayKelvin}
+                />
+                <SunriseSunset
+                  sunrise={this.state.conditions.sunrise}
+                  sunset={this.state.conditions.sunset}
+                />
+                <Location
+                  location={this.state.location}
+                  address={this.state.address.formattedAddress}
+                />
+              </React.Fragment>
+            )}
+          </div>
         </main>
         <Footer />
       </div>
