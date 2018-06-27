@@ -157,25 +157,25 @@ body {
   min-height: 100%;
   font-size: 16px;
 }
-.App {
+.weather-app {
   display: relative;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
 }
-.App-logo {
-  -webkit-animation: App-logo-spin infinite 20s linear;
-          animation: App-logo-spin infinite 20s linear;
+.app-logo {
+  -webkit-animation: app-logo-spin infinite 20s linear;
+          animation: app-logo-spin infinite 20s linear;
   height: 80px;
 }
-.App-header {
+.app-header {
   background-color: #17252a;
   padding: 20px;
   color: #fff;
 }
-.App-title {
+.app-title {
   font-size: 2.5em;
 }
-.App-intro {
+.app-intro {
   font-size: large;
 }
 .loading-spinner {
@@ -246,7 +246,7 @@ footer {
   text-align: center;
   color: #17252a;
 }
-@-webkit-keyframes App-logo-spin {
+@-webkit-keyframes app-logo-spin {
   from {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -256,7 +256,7 @@ footer {
             transform: rotate(360deg);
   }
 }
-@keyframes App-logo-spin {
+@keyframes app-logo-spin {
   from {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);

@@ -11,7 +11,7 @@ class Button extends Component {
 
     if (active) {
       styles = {
-        color: "#e6e62e"
+        color: "#ffff00"
       };
     } else {
       styles = {
@@ -28,8 +28,9 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-  func: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
   classes: PropTypes.string.isRequired,
+  func: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 };
 

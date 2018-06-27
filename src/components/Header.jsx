@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import logo from "../assets/logo.svg";
 
 class Header extends Component {
@@ -10,15 +11,12 @@ class Header extends Component {
     const displayAddress = `${city} , ${state} ${zip}`;
 
     return (
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">{this.props.title}</h1>
+      <header className="app-header">
+        <img src={logo} className="app-logo" alt="logo" />
+        <h1 className="app-title">{this.props.title}</h1>
 
         {city === null ? null : (
-          <div className="header-address">
-            <span className="of">for</span>
-            <span className="address">{displayAddress}</span>
-          </div>
+          <div className="header-address">{displayAddress}</div>
         )}
       </header>
     );
@@ -26,3 +24,7 @@ class Header extends Component {
 }
 
 export default Header;
+
+Header.propTypes = {
+  address: PropTypes.object.isRequired
+};
