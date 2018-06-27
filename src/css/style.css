@@ -170,22 +170,15 @@ body {
 .app-header {
   background-color: #17252a;
   padding: 20px;
-  color: #fff;
 }
 .app-title {
   font-size: 2.5em;
 }
-.app-intro {
-  font-size: large;
-}
 .loading-spinner {
   margin-top: 20vh;
 }
-.header-address span {
-  display: block;
-}
-.header-address .of {
-  margin-bottom: 10px;
+.header-address {
+  padding-bottom: 1em;
 }
 .container {
   max-width: 900px;

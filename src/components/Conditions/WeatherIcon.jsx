@@ -60,5 +60,5 @@ class WeatherIcon extends Component {
 export default WeatherIcon;
 
 WeatherIcon.propTypes = {
-  weatherIcon: PropTypes.string
+  weatherIcon: PropTypes.string.isRequired
 };

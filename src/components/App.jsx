@@ -6,6 +6,7 @@ import SunriseSunset from "./SunriseSunset";
 import Location from "./Location";
 import Loader from "./Loader";
 import Footer from "./Footer";
+import MadeWith from "./MadeWith";
 
 class App extends Component {
   state = {
@@ -191,6 +192,7 @@ class App extends Component {
                   location={this.state.location}
                   address={this.state.address.formattedAddress}
                 />
+                <MadeWith />
               </React.Fragment>
             )}
           </div>

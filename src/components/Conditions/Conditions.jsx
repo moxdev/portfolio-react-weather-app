@@ -36,9 +36,9 @@ export default Conditions;
 
 Conditions.propTypes = {
   conditions: PropTypes.shape({
-    humidity: PropTypes.number,
+    humidity: PropTypes.number.isRequired,
     weather: PropTypes.shape({
-      icon: PropTypes.string
+      icon: PropTypes.string.isRequired
     })
   }),
   temp: PropTypes.number.isRequired,

@@ -38,6 +38,6 @@ export default WeatherDescription;
 WeatherDescription.propTypes = {
   humidity: PropTypes.number,
   weather: PropTypes.shape({
-    description: PropTypes.string
+    description: PropTypes.string.isRequired
   })
 };

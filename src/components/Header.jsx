@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import logo from "../assets/logo.svg";
 
 class Header extends Component {
   render() {
@@ -9,15 +8,13 @@ class Header extends Component {
     const state = address.state;
     const zip = address.zip;
     const displayAddress = `${city} , ${state} ${zip}`;
+    const title = this.props.title;
 
     return (
       <header className="app-header">
-        <img src={logo} className="app-logo" alt="logo" />
-        <h1 className="app-title">{this.props.title}</h1>
+        {title ? <h1 className="app-title">{title}</h1> : null}
 
-        {city === null ? null : (
-          <div className="header-address">{displayAddress}</div>
-        )}
+        {city ? <div className="header-address">{displayAddress}</div> : null}
       </header>
     );
   }
