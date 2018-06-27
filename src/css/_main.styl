@@ -7,7 +7,8 @@ $color__brand-3 = #17252A
 $color__brand-4 = #DEF2F1
 $color__brand-5 = #FEFFFF
 $color__background =  #3AAFA9
-$color__text =  $color__brand-3
+$color__text =  $color__brand-5
+$color__text-alt =  $color__brand-3
 
 html {
   height: 100%;
@@ -16,9 +17,9 @@ html {
 body {
   background-color: $color__brand-1
   color: $color__text
+  letter-spacing: 1px
   min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
+  font-size: 16px
 }
 
 .App {
@@ -90,11 +91,12 @@ h1 {
 
     &:hover
       background-color $color__brand-4
-      color: black
+      color: $color__brand-3!important
 
 .degrees p
   font-size: 5em
   margin: 0 0 1rem 0
+  color: $color__text-alt;
 
 .weather-description
   margin-bottom: 2em
@@ -102,10 +104,16 @@ h1 {
 
   .desc, .humidity
     margin: 1em
-    color: $color__brand-4
-    letter-spacing: 1px
 
-.location, .sunrise-sunset
+
+.sunrise-sunset
+  margin-top: 2em
+  font-size: 1.2em;
+
+  span
+    margin 0 1em
+
+.location
   margin-top: 2em
 
 
@@ -118,3 +126,4 @@ footer
   padding: 1rem
   background-color: $color__brand-4
   text-align: center;
+  color $color__brand-3

@@ -122,9 +122,16 @@ class App extends Component {
 
   displayCelsius = e => {
     e.preventDefault();
+    console.log(e.target.classList);
 
     const celsius = this.state.temp.celsius;
+    const button = document.querySelectorAll("button");
+    console.log(button);
+    // if (button != null && button.classList.contains("active")) {
+    //   button.classList.remove("active");
+    // }
 
+    e.target.classList.add("active");
     this.setState({
       displayTemperature: celsius,
       degrees: {

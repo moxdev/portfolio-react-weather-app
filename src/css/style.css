@@ -152,10 +152,10 @@ html {
 }
 body {
   background-color: #3aafa9;
-  color: #17252a;
+  color: #feffff;
+  letter-spacing: 1px;
   min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
+  font-size: 16px;
 }
 .App {
   display: relative;
@@ -210,11 +210,12 @@ body {
 }
 .conditions button:hover {
   background-color: #def2f1;
-  color: #000;
+  color: #17252a !important;
 }
 .degrees p {
   font-size: 5em;
   margin: 0 0 1rem 0;
+  color: #17252a;
 }
 .weather-description {
   margin-bottom: 2em;
@@ -223,11 +224,15 @@ body {
 .weather-description .desc,
 .weather-description .humidity {
   margin: 1em;
-  color: #def2f1;
-  letter-spacing: 1px;
 }
-.location,
 .sunrise-sunset {
+  margin-top: 2em;
+  font-size: 1.2em;
+}
+.sunrise-sunset span {
+  margin: 0 1em;
+}
+.location {
   margin-top: 2em;
 }
 footer {
@@ -239,6 +244,7 @@ footer {
   padding: 1rem;
   background-color: #def2f1;
   text-align: center;
+  color: #17252a;
 }
 @-webkit-keyframes App-logo-spin {
   from {

@@ -18,6 +18,7 @@ class SunriseSunset extends Component {
 
     return formattedTime;
   };
+
   render() {
     const sunrise = this.props.sunrise;
     const sunset = this.props.sunset;
@@ -25,10 +26,10 @@ class SunriseSunset extends Component {
     return (
       <div className="sunrise-sunset">
         {sunrise === null ? null : (
-          <span>Sunrise is at {this.formatSunriseTime(sunrise)}AM</span>
+          <span>Sunrise: {this.formatSunriseTime(sunrise)}AM</span>
         )}
         {sunset === null ? null : (
-          <span>Sunset is at {this.formatSunsetTime(sunset)}PM</span>
+          <span>Sunset: {this.formatSunsetTime(sunset)}PM</span>
         )}
       </div>
     );

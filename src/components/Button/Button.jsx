@@ -3,14 +3,24 @@ import PropTypes from "prop-types";
 
 class Button extends Component {
   render() {
+    const active = this.props.active;
     const classes = this.props.classes;
     const func = this.props.func;
     const text = this.props.text;
-    const styles = {
+    let styles;
 
-    };
+    if (active) {
+      styles = {
+        color: "#e6e62e"
+      };
+    } else {
+      styles = {
+        color: "#FEFFFF"
+      };
+    }
+
     return (
-      <button className={classes} onClick={func} style={styles}>
+      <button style={styles} className={classes} onClick={func}>
         {text}
       </button>
     );
