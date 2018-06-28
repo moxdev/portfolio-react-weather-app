@@ -6,8 +6,7 @@ class Header extends Component {
     const address = this.props.address;
     const city = address.city;
     const state = address.state;
-    const zip = address.zip;
-    const displayAddress = `${city} , ${state} ${zip}`;
+    const displayAddress = `${city} , ${state}`;
     const title = this.props.title;
 
     return (
@@ -25,8 +24,7 @@ export default Header;
 Header.propTypes = {
   address: PropTypes.shape({
     city: PropTypes.string,
-    state: PropTypes.string,
-    zip: PropTypes.string
+    state: PropTypes.string
   }),
   title: PropTypes.string
 };

@@ -228,6 +228,23 @@ body {
 .location {
   margin-top: 2em;
 }
+.location p {
+  padding: 0;
+  margin: 0;
+}
+.location .disclaimer {
+  font-size: 0.8em;
+  margin-top: 7px;
+}
+.location .coordinates {
+  margin-top: 1em;
+}
+.location .coordinates span {
+  margin: 0 1em;
+}
+.made-with {
+  margin-top: 2em;
+}
 footer {
   position: fixed;
   width: 100%;

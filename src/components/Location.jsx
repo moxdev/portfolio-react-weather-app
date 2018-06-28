@@ -6,25 +6,18 @@ class Location extends Component {
     const address = this.props.address;
     const lat = this.props.location.lat;
     const lng = this.props.location.lng;
-    let displayLocation;
-
-    if (lat || lng) {
-      displayLocation = `Lattitude: ${lat}, Longitude: ${lng}`;
-    } else {
-      displayLocation = null;
-    }
 
     return (
       <div className="location">
-        <h3>Current Location</h3>
         <div className="address">
-          <p>{address}</p>
-          <small>
-            <em>*Addresses are approximate and may not be correct</em>
-          </small>
+          <p>Current Location: {address}</p>
+          <p className="disclaimer">
+            *Addresses are approximate and may not be correct
+          </p>
         </div>
         <div className="coordinates">
-          <p>{displayLocation}</p>
+          <span>Lattitude: {lat}</span>
+          <span>Longitude: {lng}</span>
         </div>
       </div>
     );
