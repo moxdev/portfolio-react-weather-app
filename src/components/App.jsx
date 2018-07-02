@@ -6,7 +6,8 @@ import SunriseSunset from "./SunriseSunset";
 import Location from "./Location";
 import Loader from "./Loader";
 import Footer from "./Footer";
-import MadeWith from "./MadeWith";
+import BuiltWith from "./BuiltWith";
+import Social from "./Social";
 
 class App extends Component {
   state = {
@@ -192,7 +193,8 @@ class App extends Component {
                   location={this.state.location}
                   address={this.state.address.formattedAddress}
                 />
-                <MadeWith />
+                <BuiltWith />
+                <Social />
               </React.Fragment>
             )}
           </div>

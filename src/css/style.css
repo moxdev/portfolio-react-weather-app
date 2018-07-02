@@ -151,11 +151,16 @@ html {
   height: 100%;
 }
 body {
-  background-color: #3aafa9;
-  color: #feffff;
+  background-color: #aaf2f4;
+  color: #222;
   letter-spacing: 1px;
   min-height: 100%;
   font-size: 16px;
+}
+h1,
+h2,
+h3 {
+  font-weight: normal;
 }
 .weather-app {
   display: relative;
@@ -168,8 +173,9 @@ body {
   height: 80px;
 }
 .app-header {
-  background-color: #17252a;
+  background-color: #6cdfdc;
   padding: 20px;
+  text-transform: uppercase;
 }
 .app-title {
   font-size: 2.5em;
@@ -186,8 +192,6 @@ body {
 }
 .weather-icon img {
   width: 300px;
-  -webkit-filter: invert(0.75) sepia(1) saturate(5) hue-rotate(10deg);
-          filter: invert(0.75) sepia(1) saturate(5) hue-rotate(10deg);
 }
 .conditions {
   margin-top: -4em;
@@ -195,20 +199,19 @@ body {
 .conditions button {
   margin: 0 1em;
   cursor: pointer;
-  background-color: #17252a;
+  background-color: #5f675c;
+  border: none;
   color: #fff;
   padding: 0.25em 1em;
-  border: 1px solid #17252a;
   font-size: 1.5em;
 }
 .conditions button:hover {
-  background-color: #def2f1;
-  color: #17252a !important;
+  background-color: #1a9c15;
+  color: #feffff !important;
 }
 .degrees p {
   font-size: 5em;
   margin: 0 0 1rem 0;
-  color: #17252a;
 }
 .weather-description {
   margin-bottom: 2em;
@@ -228,13 +231,12 @@ body {
 .location {
   margin-top: 2em;
 }
-.location p {
-  padding: 0;
-  margin: 0;
+.location h2 {
+  font-size: 1.2em;
 }
 .location .disclaimer {
   font-size: 0.8em;
-  margin-top: 7px;
+  font-style: italic;
 }
 .location .coordinates {
   margin-top: 1em;
@@ -242,8 +244,54 @@ body {
 .location .coordinates span {
   margin: 0 1em;
 }
-.made-with {
+.look-at-me {
   margin-top: 2em;
+}
+.built-with {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.built-with a:hover {
+  color: #000;
+}
+.built-with img {
+  width: 80px;
+}
+.repo {
+  margin-top: 1em;
+}
+.repo a {
+  color: inherit;
+}
+.repo a:hover {
+  color: #ff0;
+}
+.social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 200px;
+  margin: 2em auto;
+}
+.social a:hover {
+  -webkit-filter: contrast(5);
+          filter: contrast(5);
+}
+.social img {
+  width: 50px;
 }
 footer {
   position: fixed;
@@ -252,9 +300,16 @@ footer {
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: #def2f1;
+  background-color: #5f675c;
   text-align: center;
-  color: #17252a;
+  color: #fff;
+}
+footer a {
+  color: #feffff;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #aaf2f4;
 }
 @-webkit-keyframes app-logo-spin {
   from {

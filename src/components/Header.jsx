@@ -6,7 +6,7 @@ class Header extends Component {
     const address = this.props.address;
     const city = address.city;
     const state = address.state;
-    const displayAddress = `${city} , ${state}`;
+    const displayAddress = `${city}, ${state}`;
     const title = this.props.title;
 
     return (

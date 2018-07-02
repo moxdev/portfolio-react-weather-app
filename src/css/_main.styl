@@ -1,26 +1,50 @@
 /*
 * App Styles
 */
-$color__brand-1 = #3AAFA9
-$color__brand-2 = #2B7A78
-$color__brand-3 = #17252A
-$color__brand-4 = #DEF2F1
-$color__brand-5 = #FEFFFF
-$color__background =  #3AAFA9
-$color__text =  $color__brand-5
+
+// #aaf2f4
+// #6cdfdc
+// #1a9c15
+// #197632
+// #5f675c
+
+// #3AAFA9
+// #2B7A78
+// #17252A
+// #DEF2F1
+// #FEFFFF
+
+
+$color__brand-1 = #aaf2f4
+$color__brand-2 = #6cdfdc
+$color__brand-3 = #5f675c
+$color__brand-4 = #1a9c15
+$color__brand-5 = #197632
+$color__brand-6 = #ffff00
+
+$color__background =  $color__brand-1
+$color__background-header =  $color__brand-2
+$color__background-footer =  $color__brand-3
+
+$color__text =  #222
 $color__text-alt =  $color__brand-3
+$color__text-footer =  #FEFFFF
+$color__text-hover =  #FEFFFF
 
 html {
   height: 100%;
 }
 
 body {
-  background-color: $color__brand-1
+  background-color: $color__background
   color: $color__text
   letter-spacing: 1px
   min-height: 100%;
   font-size: 16px
 }
+
+h1, h2, h3
+  font-weight: normal
 
 .weather-app {
   display: relative
@@ -34,8 +58,9 @@ body {
 }
 
 .app-header {
-  background-color: $color__brand-3;
+  background-color: $color__background-header;
   padding: 20px;
+  text-transform: uppercase
 }
 
 .app-title {
@@ -47,10 +72,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-
-
 h1 {
-
 }
 
 .loading-spinner
@@ -66,7 +88,6 @@ h1 {
 .weather-icon
   img
     width: 300px;
-    filter: invert(.75) sepia(1) saturate(5) hue-rotate(10deg)
 
 .conditions
   margin-top: -4em
@@ -75,19 +96,18 @@ h1 {
     margin: 0 1em
     cursor: pointer
     background-color: $color__brand-3
+    border: none
     color: #fff
     padding: .25em 1em
-    border: 1px solid $color__brand-3
     font-size: 1.5em
 
     &:hover
       background-color $color__brand-4
-      color: $color__brand-3!important
+      color: $color__text-hover!important
 
 .degrees p
   font-size: 5em
   margin: 0 0 1rem 0
-  color: $color__text-alt;
 
 .weather-description
   margin-bottom: 2em
@@ -107,13 +127,17 @@ h1 {
 .location
   margin-top: 2em
 
+  h2
+    font-size: 1.2em
+
   p
-    padding: 0
-    margin: 0
+    // padding: 0
+    // margin: 0
 
   .disclaimer
     font-size: .8em
-    margin-top: 7px
+    // margin-top: 7px
+    font-style: italic
 
   .coordinates
     margin-top: 1em
@@ -121,8 +145,43 @@ h1 {
     span
       margin: 0 1em
 
-.made-with
+.look-at-me
   margin-top: 2em
+
+.built-with
+  display: flex
+  justify-content: center
+  align-items: center
+
+  a
+    &:hover
+      color #000
+
+  img
+    width: 80px
+
+.repo
+  margin-top: 1em
+
+  a
+    color inherit
+
+    &:hover
+      color: $color__brand-6
+
+.social
+  display: flex
+  justify-content: space-between
+  align-items: center
+  max-width: 200px
+  margin: 2em auto
+
+  a
+    &:hover
+      filter: contrast(5);
+
+  img
+    width: 50px
 
 footer
   position: fixed
@@ -131,6 +190,13 @@ footer
   bottom: 0
   left: 0
   padding: 1rem
-  background-color: $color__brand-4
+  background-color: $color__background-footer
   text-align: center;
-  color $color__brand-3
+  color #fff
+
+  a
+    color: $color__text-footer
+    text-decoration: none
+
+    &:hover
+      color: $color__brand-1

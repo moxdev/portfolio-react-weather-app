@@ -8,18 +8,20 @@ class Location extends Component {
     const lng = this.props.location.lng;
 
     return (
-      <div className="location">
+      <section className="location">
+        <h2>Your Current Location</h2>
+
         <div className="address">
-          <p>Current Location: {address}</p>
-          <p className="disclaimer">
-            *Addresses are approximate and may not be correct
-          </p>
+          <p>{address}*</p>
         </div>
+
         <div className="coordinates">
           <span>Lattitude: {lat}</span>
           <span>Longitude: {lng}</span>
         </div>
-      </div>
+
+        <p className="disclaimer">*Addresses are approximate</p>
+      </section>
     );
   }
 }

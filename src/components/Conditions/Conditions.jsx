@@ -16,7 +16,7 @@ class Conditions extends Component {
     const displayKelvin = this.props.displayKelvin;
 
     return (
-      <div className="weather">
+      <section className="weather">
         <WeatherIcon weatherIcon={weatherIcon} />
         <Temperature
           temp={temp}
@@ -27,7 +27,7 @@ class Conditions extends Component {
           weather={weather}
           humidity={humidity}
         />
-      </div>
+      </section>
     );
   }
 }
