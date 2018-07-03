@@ -165,7 +165,7 @@ h3 {
 .weather-app {
   display: relative;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 .app-logo {
   -webkit-animation: app-logo-spin infinite 20s linear;
@@ -175,10 +175,11 @@ h3 {
 .app-header {
   background-color: #6cdfdc;
   padding: 20px;
-  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
 }
 .app-title {
-  font-size: 2.5em;
+  text-transform: uppercase;
+  font-size: 3.2em;
 }
 .loading-spinner {
   margin-top: 20vh;
@@ -209,9 +210,15 @@ h3 {
   background-color: #1a9c15;
   color: #feffff !important;
 }
-.degrees p {
-  font-size: 5em;
+.degrees {
   margin: 0 0 1rem 0;
+}
+.degrees span {
+  font-size: 5em;
+}
+.degrees img {
+  width: 25px;
+  margin-left: 20px;
 }
 .weather-description {
   margin-bottom: 2em;
@@ -224,9 +231,20 @@ h3 {
 .sunrise-sunset {
   margin-top: 2em;
   font-size: 1.2em;
+  position: relative;
 }
 .sunrise-sunset span {
   margin: 0 1em;
+}
+.sunrise-sunset .sunrise:before {
+  content: "";
+  background-image: url("https://localhost:3000//imgs/sunrise.svg");
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
 }
 .location {
   margin-top: 2em;

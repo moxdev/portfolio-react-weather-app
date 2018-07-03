@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import thermometer from "../../assets/thermometer.svg";
 
 class DisplayTemperature extends Component {
   displayDegrees = () => {
@@ -9,17 +10,22 @@ class DisplayTemperature extends Component {
     const showK = this.props.showK;
 
     if (showK && temp !== 0) {
-      return <p>{temp.toFixed(0)}&deg;K</p>;
+      return <span>{temp.toFixed(0)}&deg;K</span>;
     } else if (showC && temp !== 0) {
-      return <p>{temp.toFixed(0)}&deg;C</p>;
+      return <span>{temp.toFixed(0)}&deg;C</span>;
     } else if (showF && temp !== 0) {
-      return <p>{temp.toFixed(0)}&deg;F</p>;
+      return <span>{temp.toFixed(0)}&deg;F</span>;
     } else {
       return null;
     }
   };
   render() {
-    return <div className="degrees">{this.displayDegrees()}</div>;
+    return (
+      <div className="degrees">
+        {this.displayDegrees()}
+        <img src={thermometer} alt="" />
+      </div>
+    );
   }
 }
 

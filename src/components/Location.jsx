@@ -16,8 +16,8 @@ class Location extends Component {
         </div>
 
         <div className="coordinates">
-          <span>Lattitude: {lat}</span>
-          <span>Longitude: {lng}</span>
+          <span>Lattitude: {lat.toFixed(4)}</span>
+          <span>Longitude: {lng.toFixed(4)}</span>
         </div>
 
         <p className="disclaimer">*Addresses are approximate</p>
@@ -30,6 +30,8 @@ export default Location;
 
 Location.propTypes = {
   address: PropTypes.string,
-  lat: PropTypes.number,
-  lng: PropTypes.number
+  location: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number
+  })
 };

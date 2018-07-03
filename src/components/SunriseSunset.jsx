@@ -27,10 +27,14 @@ class SunriseSunset extends Component {
     return (
       <section className="sunrise-sunset">
         {sunrise === null ? null : (
-          <span>Sunrise: {this.formatSunriseTime(sunrise)}AM</span>
+          <span className="sunrise">
+            Sunrise: {this.formatSunriseTime(sunrise)}AM
+          </span>
         )}
         {sunset === null ? null : (
-          <span>Sunset: {this.formatSunsetTime(sunset)}PM</span>
+          <span className="sunset">
+            Sunset: {this.formatSunsetTime(sunset)}PM
+          </span>
         )}
       </section>
     );
