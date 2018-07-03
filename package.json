@@ -20,12 +20,12 @@
   },
   "scripts": {
     "build": "npm-run-all build-css build-js",
-    "build-css": "stylus --compress --use autoprefixer-stylus src/static/stylus/style.styl --out src/static/css/style.css",
+    "build-css": "stylus -c -u autoprefixer-stylus src/static/stylus/style.styl -o src/static/css/style.css",
     "build-js": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test --env=jsdom",
     "start": "npm-run-all -p watch-stylus start-react",
     "start-react": "react-scripts start",
-    "watch-stylus": "stylus --watch --use autoprefixer-stylus src/static/stylus/style.styl --out src/static/css/style.css"
+    "watch-stylus": "stylus -w -u autoprefixer-stylus src/static/stylus/style.styl -o src/static/css/style.css"
   }
 }

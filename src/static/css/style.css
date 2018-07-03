@@ -151,10 +151,18 @@ html {
   height: 100%;
 }
 body {
-  background-color: #aaf2f4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #5f675c;
   color: #222;
-  letter-spacing: 1px;
-  min-height: 100%;
+  letter-spacing: 0.8px;
+  line-height: 1.5;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -163,91 +171,151 @@ h2,
 h3 {
   font-weight: normal;
 }
+h1 {
+  line-height: 1.25;
+}
 .weather-app {
-  display: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   text-align: center;
+  background-color: #6cdfdc;
 }
 .loading-spinner {
   margin-top: 20vh;
+  margin-bottom: 20vh;
 }
 .container {
-  max-width: 900px;
+  padding: 0.625rem;
+  max-width: 960px;
   margin: 0 auto;
 }
+@media only screen and (min-width: 600px) {
+  .container {
+    padding: 1.25rem;
+  }
+}
 .app-header {
-  background-color: #6cdfdc;
-  padding: 20px;
+  background-color: #aaf2f4;
+  padding: 10px;
 }
 .app-title {
   text-transform: uppercase;
-  font-size: 3.2em;
 }
 .header-address {
   padding-bottom: 1em;
+}
+@media only screen and (min-width: 900px) {
+  .app-title {
+    font-size: 3.2em;
+  }
+}
+.weather-icon {
+  margin-top: -3em;
 }
 .weather-icon img {
   width: 300px;
 }
 .conditions {
-  margin-top: -4em;
+  margin-top: -5em;
 }
 .conditions button {
-  margin: 0 1em;
-  cursor: pointer;
   background-color: #5f675c;
-  border: none;
   color: #fff;
-  padding: 0.25em 1em;
-  font-size: 1.5em;
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  border: none;
 }
 .conditions button:hover {
   background-color: #1a9c15;
   color: #feffff !important;
 }
 .degrees {
-  margin: 0 0 1rem 0;
+  margin-bottom: 1rem;
 }
 .degrees span {
   font-size: 5em;
 }
 .degrees img {
   width: 25px;
-  margin-left: 20px;
+  padding-left: 30px;
 }
 .weather-description {
-  margin-bottom: 2em;
+  margin-bottom: 1.5rem;
   font-size: 1.4em;
 }
 .weather-description .desc,
 .weather-description .humidity {
-  margin: 1em;
-}
-.sunrise-sunset {
-  margin-top: 2em;
-  font-size: 1.2em;
-  position: relative;
-}
-.sunrise-sunset span {
   margin: 0 1em;
 }
+@media only screen and (min-width: 760px) {
+  .button-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  button {
+    margin: 1rem;
+    width: 175px;
+  }
+}
+.sunrise-sunset {
+  margin-top: 1rem;
+  font-size: 1.2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+.sunrise-sunset .sunrise,
+.sunrise-sunset .sunset {
+  margin: 0 1rem;
+}
+.sunrise-sunset .sunrise img,
+.sunrise-sunset .sunset img {
+  display: block;
+  margin: 0 auto 10px;
+}
 .location {
-  margin-top: 2em;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #1a9c15;
+  color: #fff;
 }
 .location h2 {
-  font-size: 1.2em;
+  font-size: 1.3em;
+}
+.location .coordinates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+}
+.location .coordinates span {
+  margin: 0 1rem;
 }
 .location .disclaimer {
   font-size: 0.8em;
   font-style: italic;
-}
-.location .coordinates {
-  margin-top: 1em;
-}
-.location .coordinates span {
-  margin: 0 1em;
+  margin: 1.2rem 0;
 }
 .look-at-me {
-  margin-top: 2em;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  font-size: 0.9em;
 }
 .built-with {
   display: -webkit-box;
@@ -259,9 +327,6 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.built-with a:hover {
-  color: #000;
 }
 .built-with .app-logo {
   -webkit-animation: app-logo-spin infinite 20s linear;
@@ -289,7 +354,7 @@ h3 {
   }
 }
 .repo {
-  margin-top: 1em;
+  margin-top: 1rem;
 }
 .repo a {
   color: inherit;
@@ -301,37 +366,32 @@ h3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   max-width: 200px;
-  margin: 2em auto;
+  margin: 3rem auto;
 }
 .social a:hover {
   -webkit-filter: contrast(5);
           filter: contrast(5);
 }
 .social img {
-  width: 50px;
+  width: 35px;
 }
 footer {
-  position: fixed;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  left: 0;
   padding: 1rem;
   background-color: #5f675c;
   text-align: center;
   color: #fff;
+  font-size: 0.9em;
 }
 footer a {
   color: #feffff;
   text-decoration: none;
 }
 footer a:hover {
-  color: #aaf2f4;
+  color: #ff0;
 }

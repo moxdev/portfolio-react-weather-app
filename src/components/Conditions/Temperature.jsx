@@ -25,24 +25,26 @@ class Temperature extends Component {
           showK={showK}
         />
         <WeatherDescription weather={weather} humidity={humidity} />
-        <Button
-          active={showF}
-          classes="fahrenheit"
-          func={displayFahrenheit}
-          text="Fahrenheit"
-        />
-        <Button
-          active={showC}
-          classes="celsius"
-          func={displayCelsius}
-          text="Celsius"
-        />
-        <Button
-          active={showK}
-          classes="kelvin"
-          func={displayKelvin}
-          text="Kelvin"
-        />
+        <div className="button-wrapper">
+          <Button
+            active={showF}
+            classes="fahrenheit"
+            func={displayFahrenheit}
+            text="Fahrenheit"
+          />
+          <Button
+            active={showC}
+            classes="celsius"
+            func={displayCelsius}
+            text="Celsius"
+          />
+          <Button
+            active={showK}
+            classes="kelvin"
+            func={displayKelvin}
+            text="Kelvin"
+          />
+        </div>
       </div>
     );
   }
