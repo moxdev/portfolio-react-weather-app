@@ -1,0 +1,34 @@
+/*
+* Look At Me Styles
+*/
+
+.look-at-me
+  margin-top: 2em
+
+.built-with
+  display: flex
+  justify-content: center
+  align-items: center
+
+  a
+    &:hover
+      color #000
+
+  .app-logo
+    animation: app-logo-spin infinite 20s linear
+    width: 80px
+
+  @keyframes app-logo-spin
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+
+.repo
+  margin-top: 1em
+
+  a
+    color inherit
+
+    &:hover
+      color: $color__brand-6
+
+

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import sunriseImg from "../assets/sunrise.svg";
+import sunsetImg from "../assets/sunset.svg";
 
 class SunriseSunset extends Component {
   formatSunriseTime = sunrise => {
@@ -27,14 +29,16 @@ class SunriseSunset extends Component {
     return (
       <section className="sunrise-sunset">
         {sunrise === null ? null : (
-          <span className="sunrise">
-            Sunrise: {this.formatSunriseTime(sunrise)}AM
-          </span>
+          <div className="sunrise">
+            <img src={sunriseImg} alt="" />
+            <span>Sunrise: {this.formatSunriseTime(sunrise)}AM</span>
+          </div>
         )}
         {sunset === null ? null : (
-          <span className="sunset">
-            Sunset: {this.formatSunsetTime(sunset)}PM
-          </span>
+          <div className="sunset">
+            <img src={sunsetImg} alt="" />
+            <span>Sunset: {this.formatSunsetTime(sunset)}PM</span>
+          </div>
         )}
       </section>
     );

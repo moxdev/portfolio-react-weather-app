@@ -156,6 +156,7 @@ body {
   letter-spacing: 1px;
   min-height: 100%;
   font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
 }
 h1,
 h2,
@@ -165,31 +166,24 @@ h3 {
 .weather-app {
   display: relative;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
 }
-.app-logo {
-  -webkit-animation: app-logo-spin infinite 20s linear;
-          animation: app-logo-spin infinite 20s linear;
-  height: 80px;
+.loading-spinner {
+  margin-top: 20vh;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 .app-header {
   background-color: #6cdfdc;
   padding: 20px;
-  font-family: 'Open Sans', sans-serif;
 }
 .app-title {
   text-transform: uppercase;
   font-size: 3.2em;
 }
-.loading-spinner {
-  margin-top: 20vh;
-}
 .header-address {
   padding-bottom: 1em;
-}
-.container {
-  max-width: 900px;
-  margin: 0 auto;
 }
 .weather-icon img {
   width: 300px;
@@ -236,16 +230,6 @@ h3 {
 .sunrise-sunset span {
   margin: 0 1em;
 }
-.sunrise-sunset .sunrise:before {
-  content: "";
-  background-image: url("https://localhost:3000//imgs/sunrise.svg");
-  background-repeat: no-repeat;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 0px;
-  left: 50%;
-}
 .location {
   margin-top: 2em;
 }
@@ -279,8 +263,30 @@ h3 {
 .built-with a:hover {
   color: #000;
 }
-.built-with img {
+.built-with .app-logo {
+  -webkit-animation: app-logo-spin infinite 20s linear;
+          animation: app-logo-spin infinite 20s linear;
   width: 80px;
+}
+@-webkit-keyframes app-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes app-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 .repo {
   margin-top: 1em;
@@ -328,24 +334,4 @@ footer a {
 }
 footer a:hover {
   color: #aaf2f4;
-}
-@-webkit-keyframes app-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes app-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
 }
