@@ -19,11 +19,12 @@ class DisplayTemperature extends Component {
       return null;
     }
   };
+
   render() {
     return (
       <div className="degrees">
         {this.displayDegrees()}
-        <img src={thermometer} alt="" />
+        <img src={thermometer} alt="Thermometer icon" />
       </div>
     );
   }

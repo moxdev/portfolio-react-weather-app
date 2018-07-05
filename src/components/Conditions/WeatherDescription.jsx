@@ -20,12 +20,14 @@ class WeatherDescription extends Component {
     return (
       <div className="weather-description">
         {description === null ? null : (
-          <span className="desc">{this.capitalizeString(description)}</span>
+          <span className="desc">
+            Conditions: <span>{this.capitalizeString(description)}</span>
+          </span>
         )}
 
         {humidity === null ? null : (
           <span className="humidity">
-            Humidity: <span className="highlight">{humidity}%</span>
+            Humidity: <span>{humidity}&#37;</span>
           </span>
         )}
       </div>

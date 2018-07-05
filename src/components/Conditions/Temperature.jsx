@@ -57,9 +57,11 @@ Temperature.propTypes = {
   displayFahrenheit: PropTypes.func.isRequired,
   displayKelvin: PropTypes.func.isRequired,
   humidity: PropTypes.number.isRequired,
-  showC: PropTypes.bool,
-  showF: PropTypes.bool,
-  showK: PropTypes.bool,
+  degrees: PropTypes.shape({
+    showC: PropTypes.bool,
+    showF: PropTypes.bool,
+    showK: PropTypes.bool
+  }),
   temp: PropTypes.number.isRequired,
   weather: PropTypes.object.isRequired
 };

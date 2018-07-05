@@ -30,13 +30,13 @@ class SunriseSunset extends Component {
       <section className="sunrise-sunset">
         {sunrise === null ? null : (
           <div className="sunrise">
-            <img src={sunriseImg} alt="" />
+            <img src={sunriseImg} alt="Yellow sunrise icon" />
             <span>Sunrise: {this.formatSunriseTime(sunrise)}AM</span>
           </div>
         )}
         {sunset === null ? null : (
           <div className="sunset">
-            <img src={sunsetImg} alt="" />
+            <img src={sunsetImg} alt="Yellow sunset icon" />
             <span>Sunset: {this.formatSunsetTime(sunset)}PM</span>
           </div>
         )}
