@@ -165,6 +165,7 @@ body {
   line-height: 1.5;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
 }
 h1,
 h2,
@@ -174,16 +175,16 @@ h3 {
 h1 {
   line-height: 1.25;
 }
+.loading-spinner {
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+}
 .weather-app {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   text-align: center;
   background-color: #6cdfdc;
-}
-.loading-spinner {
-  margin-top: 20vh;
-  margin-bottom: 20vh;
 }
 .container {
   padding: 0.625rem;
@@ -201,6 +202,7 @@ h1 {
 }
 .app-title {
   text-transform: uppercase;
+  font-weight: 800;
 }
 .header-address {
   padding-bottom: 1em;
@@ -235,6 +237,7 @@ h1 {
 }
 .degrees {
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 .degrees span {
   font-size: 5em;

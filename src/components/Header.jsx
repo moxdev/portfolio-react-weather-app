@@ -11,7 +11,9 @@ class Header extends Component {
 
     return (
       <header className="app-header">
-        {title ? <h1 className="app-title">{title}</h1> : null}
+        {title ? (
+          <h1 className="app-title font-effect-outline">{title}</h1>
+        ) : null}
 
         {city ? <div className="header-address">{displayAddress}</div> : null}
       </header>
