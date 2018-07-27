@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 class Header extends Component {
   render() {
     const address = this.props.address;
-    const city = address.city;
-    const state = address.state;
-    const displayAddress = `${city}, ${state}`;
+    const displayAddress = address.formattedAddress;
     const title = this.props.title;
 
     return (
@@ -15,7 +13,9 @@ class Header extends Component {
           <h1 className="app-title font-effect-outline">{title}</h1>
         ) : null}
 
-        {city ? <div className="header-address">{displayAddress}</div> : null}
+        {displayAddress ? (
+          <div className="header-address">{displayAddress}</div>
+        ) : null}
       </header>
     );
   }
@@ -25,8 +25,7 @@ export default Header;
 
 Header.propTypes = {
   address: PropTypes.shape({
-    city: PropTypes.string,
-    state: PropTypes.string
+    displayAddress: PropTypes.string
   }),
   title: PropTypes.string
 };

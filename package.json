@@ -2,6 +2,7 @@
   "name": "my-weather-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://shanebiggs.com/weather-app",
   "devDependencies": {
     "axios": "^0.18.0",
     "eslint-config-prettier": "^2.9.0",

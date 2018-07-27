@@ -38,10 +38,7 @@ class App extends Component {
       sunset: null
     },
     address: {
-      formattedAddress: null,
-      city: null,
-      state: null,
-      zip: null
+      formattedAddress: null
     },
     loading: true
   };
@@ -62,10 +59,7 @@ class App extends Component {
 
             this.setState({
               address: {
-                formattedAddress: results[0].formatted_address,
-                city: results[0].address_components[2].long_name,
-                state: results[0].address_components[5].long_name,
-                zip: results[0].address_components[7].long_name
+                formattedAddress: results[0].formatted_address
               }
             });
           } else {
@@ -88,7 +82,7 @@ class App extends Component {
         axios
           .get(URL)
           .then(response => {
-            console.log("AXIOS: Successfull Response");
+            console.log("AXIOS: Openweathermap.org successful response");
 
             this.setState(
               {
