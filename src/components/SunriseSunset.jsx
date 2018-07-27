@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import sunriseImg from "../assets/sunrise.svg";
-import sunsetImg from "../assets/sunset.svg";
+import sunriseImg from "../assets/weather-icons/sunrise.svg";
+import sunsetImg from "../assets/weather-icons/sunset.svg";
 
 class SunriseSunset extends Component {
   formatSunriseTime = sunrise => {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import thermometer from "../../assets/thermometer.svg";
+import thermometer from "../../assets/weather-icons/thermometer.svg";
 
 class DisplayTemperature extends Component {
   displayDegrees = () => {
