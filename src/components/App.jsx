@@ -38,74 +38,67 @@ class App extends Component {
       sunset: null
     },
     address: {
-      formattedAddress: null
+      formattedAddress: null,
+      street: null,
+      state: null,
+      zip: null,
+      country: null
     },
-    loading: true
-  };
-
-  getAddress = () => {
-    const lat = this.state.location.lat;
-    const lng = this.state.location.lng;
-    const google = window.google ? window.google : {};
-    const geocoder = new google.maps.Geocoder();
-    const latLng = new google.maps.LatLng(lat, lng);
-
-    geocoder.geocode(
-      { location: latLng },
-      function(results, status) {
-        if (status === "OK") {
-          if (results[0]) {
-            console.log("GEOCODER: Status OK");
-
-            this.setState({
-              address: {
-                formattedAddress: results[0].formatted_address
-              }
-            });
-          } else {
-            window.alert("No results found");
-          }
-        }
-      }.bind(this)
-    );
+    loading: true,
+    showLoadingError: false
   };
 
   componentDidMount() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
-        const url = "https://api.openweathermap.org/data/2.5/weather?";
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
-        const API = "aee8fa9823413f068bcc925671aeb2ac";
-        const URL = `${url}lat=${lat}&lon=${lng}&APPID=${API}`;
+        const openweathermapURL =
+          "https://api.openweathermap.org/data/2.5/weather";
+        const openweathermapAPPID = "aee8fa9823413f068bcc925671aeb2ac";
+        const loactionIQURL = "https://us1.locationiq.org/v1/reverse.php";
+        const loactionIQToken = "d05ca04bbe6037";
+        const getLocation = `${openweathermapURL}?lat=${lat}&lon=${lng}&APPID=${openweathermapAPPID}`;
+        const getAddress = `${loactionIQURL}?key=${loactionIQToken}&lat=${lat}&lon=${lng}&format=json`;
 
         axios
-          .get(URL)
+          .get(getLocation)
           .then(response => {
-            console.log("AXIOS: Openweathermap.org successful response");
+            console.log("AXIOS: openweathermap.org successful response");
 
-            this.setState(
-              {
-                conditions: {
-                  weather: response.data.weather[0],
-                  humidity: response.data.main.humidity,
-                  sunrise: response.data.sys.sunrise,
-                  sunset: response.data.sys.sunset
-                },
-                location: {
-                  lat,
-                  lng
-                },
-                temp: {
-                  fahrenheit: response.data.main.temp * 1.8 - 459.67,
-                  celsius: response.data.main.temp - 273.15,
-                  kelvin: response.data.main.temp
-                },
-                displayTemperature: response.data.main.temp * 1.8 - 459.67,
-                loading: false
+            this.setState({
+              conditions: {
+                weather: response.data.weather[0],
+                humidity: response.data.main.humidity,
+                sunrise: response.data.sys.sunrise,
+                sunset: response.data.sys.sunset
               },
-              this.getAddress
-            );
+              location: {
+                lat,
+                lng
+              },
+              temp: {
+                fahrenheit: response.data.main.temp * 1.8 - 459.67,
+                celsius: response.data.main.temp - 273.15,
+                kelvin: response.data.main.temp
+              },
+              displayTemperature: response.data.main.temp * 1.8 - 459.67,
+              loading: false
+            });
+
+            axios.get(getAddress).then(response => {
+              console.log("AXIOS: locationiq.org successful response");
+
+              this.setState({
+                address: {
+                  formattedAddress: response.data.display_name,
+                  street: response.data.address.road,
+                  state: response.data.address.state,
+                  zip: response.data.address.postcode,
+                  country: response.data.address.country
+                }
+              });
+            });
           })
           .catch(error => {
             console.log(`Error: No Response: ${error}`);
@@ -114,6 +107,8 @@ class App extends Component {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
+
+    setTimeout(() => this.setState({ showLoadingError: true }), 20000);
   }
 
   displayCelsius = e => {
@@ -168,7 +163,7 @@ class App extends Component {
         <main role="main">
           <div className="container">
             {this.state.loading ? (
-              <Loader />
+              <Loader showLoadingError={this.state.showLoadingError} />
             ) : (
               <React.Fragment>
                 <Conditions
@@ -185,7 +180,7 @@ class App extends Component {
                 />
                 <Location
                   location={this.state.location}
-                  address={this.state.address.formattedAddress}
+                  address={this.state.address}
                 />
                 <BuiltWith />
                 <Social />

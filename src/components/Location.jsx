@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 class Location extends Component {
   render() {
     const address = this.props.address;
+    const street = address.street;
+    const state = address.state;
+    const zip = address.zip;
+    const country = address.country;
+    const displayAddress = `${street}, ${state} ${zip} ${country}`;
     const lat = this.props.location.lat;
     const lng = this.props.location.lng;
 
@@ -12,7 +17,7 @@ class Location extends Component {
         <h2>Your Current Location</h2>
 
         <div className="address">
-          <p>{address}*</p>
+          <p>{displayAddress}*</p>
         </div>
 
         <div className="coordinates">
@@ -29,7 +34,12 @@ class Location extends Component {
 export default Location;
 
 Location.propTypes = {
-  address: PropTypes.string,
+  address: PropTypes.shape({
+    street: PropTypes.string,
+    state: PropTypes.string,
+    zip: PropTypes.string,
+    country: PropTypes.string
+  }),
   location: PropTypes.shape({
     lat: PropTypes.number,
     lng: PropTypes.number
